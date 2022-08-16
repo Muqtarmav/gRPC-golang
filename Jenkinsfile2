@@ -3,10 +3,13 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-muqtarmav')
     }
-    stages { 
-        stage('SCM Checkout') {
-            steps{
-            git 'https://github.com/Muqtarmav/gRPC-golang.git'
+    
+    stages {        
+        stage('Pre Test') {
+            steps {
+                echo 'Installing dependencies'
+                sh 'go version'
+                sh 'go get -u golang.org/x/lint/golint'
             }
         }
 
