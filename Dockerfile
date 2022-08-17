@@ -22,4 +22,4 @@ RUN go build
 #EXPOSE 7000
 
 #ENTRYPOINT ["/go-roava"]
-CMD [""]
+CMD ["go" "run" "/server.go"]
