@@ -24,4 +24,4 @@ RUN go build
 #EXPOSE 7000
 
 #ENTRYPOINT ["/go-roava"]
-CMD ["./gRPC-golang"]
+CMD ["go" "run" "./server.go"]
