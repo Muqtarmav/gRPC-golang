@@ -10,7 +10,7 @@ import (
 func main() {
 	var conn *grpc.ClientConn
 
-	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
+	conn, err := grpc.Dial("34.170.197.145:6000", grpc.WithInsecure())
 	if err != nil {
 		log.Fatal("error dialing server::", err)
 	}

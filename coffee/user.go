@@ -50,7 +50,11 @@ func (s *Server) Login(ctx context.Context, request *LoginRequest) (*Response, e
 	defer cancel()
 	err := usersCollection.FindOne(ctxs, bson.M{"EmailAddress": request.Email}).Decode(user)
 	if err != nil {
-		return nil, err
+		log.Fatalln(err)
+	}
+	err = usersCollection.FindOne(ctxs, bson.M{"Password": request.Password}).Decode(user)
+	if err != nil {
+		log.Fatalln(err)
 	}
 	response := &Response{
 		Message: "Successfully logged in",
