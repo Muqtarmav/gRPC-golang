@@ -22,9 +22,9 @@ COPY . ./
 
 RUN go build 
 
-#ENTRYPOINT go run server.go
+ENTRYPOINT go run server.go
 
 #EXPOSE 7000
 
 #ENTRYPOINT ["/go-roava"]
-CMD ["./server.go"]
+#CMD ["./server.go"]
