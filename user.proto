@@ -1,4 +1,5 @@
 syntax="proto3";
+import "google/protobuf/timestamp.proto";
 
 message RegisterRequest{
   int32 Id = 1;
@@ -20,6 +21,13 @@ message AddCoffeeToCart{
 
 message Response{
   string Message =1;
+}
+
+message Order_coffee{
+  int32 Order_ID =1;
+  repeated  RegisterRequest Order_Cart =2;
+  google.protobuf.Timestamp Orderered_At =3;
+  double  Price =4;
 }
 
 service CoffeeUserServices{
