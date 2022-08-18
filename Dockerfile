@@ -1,6 +1,10 @@
 FROM golang:1.15
 
 
+RUN go get -u google.golang.org/grpc && \
+    go get -u github.com/golang/protobuf/protoc-gen-go
+
+
 ENV PROTOC_ZIP=protoc-3.13.0-linux-x86_64.zip
 
 RUN apt-get update && apt-get install -y unzip
@@ -21,7 +25,9 @@ COPY . ./
 
 RUN go build 
 
+ENTRYPOINT go run server.go
+
 #EXPOSE 7000
 
 #ENTRYPOINT ["/go-roava"]
-CMD ["go" "run" "./server.go"]
+#CMD ["go" "run" "./server.go"]
