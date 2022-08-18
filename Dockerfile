@@ -1,9 +1,8 @@
 FROM golang:1.15
 
 
-RUN go get -u google.golang.org/grpc && \
-    go get -u github.com/golang/protobuf/protoc-gen-go
-
+    
+WORKDIR /app
 
 ENV PROTOC_ZIP=protoc-3.13.0-linux-x86_64.zip
 
@@ -12,8 +11,6 @@ RUN curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.13
     && unzip -o $PROTOC_ZIP -d /usr/local bin/protoc \
     && unzip -o $PROTOC_ZIP -d /usr/local 'include/*' \ 
     && rm -f $PROTOC_ZIP
-    
-WORKDIR /app
 
 
 COPY go.mod ./
