@@ -21,7 +21,7 @@ pipeline {
         stage('docker build'){
             steps {
                 script{
-                sh 'docker build -t muqtarmav/go-roava:2.0 .' 
+                sh 'docker build -t muqtarmav/go-roava:3.0 .' 
             }
         }
         
