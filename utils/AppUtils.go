@@ -19,12 +19,6 @@ func Connect() *mongo.Client {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer func(client *mongo.Client, ctx context.Context) {
-		err := client.Disconnect(ctx)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}(client, ctx)
 	return client
 
 }
