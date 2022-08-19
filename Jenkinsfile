@@ -21,7 +21,7 @@ pipeline {
         stage('docker build'){
             steps {
                 script{
-                sh 'docker build -t muqtarmav/go-roava:3.0 .' 
+                sh 'docker build -t muqtarmav/go-roava:4.0 .' 
             }
         }
         
@@ -33,7 +33,7 @@ pipeline {
                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
                    sh 'docker login -u muqtarmav -p ${dockerhub}'
 }
-                   sh 'docker push muqtarmav/go-roava:3.0'
+                   sh 'docker push muqtarmav/go-roava:4.0'
                 }
             }
         }
