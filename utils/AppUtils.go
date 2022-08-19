@@ -9,15 +9,16 @@ import (
 )
 
 func Connect() *mongo.Client {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://Jospag:shipel@cluster0.70qtalt.mongodb.net/?retryWrites=true&w=majority"))
-	if err != nil {
-		log.Fatal(err)
-	}
+	serverAPIOptions := options.ServerAPI(options.ServerAPIVersion1)
+	clientOptions := options.Client().
+		ApplyURI("mongodb+srv://Jospag:shipel@cluster0.70qtalt.mongodb.net/?retryWrites=true&w=majority").
+		SetServerAPIOptions(serverAPIOptions)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	err = client.Connect(ctx)
+	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 	return client
+
 }
