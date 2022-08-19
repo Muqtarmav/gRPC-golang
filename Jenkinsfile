@@ -33,7 +33,7 @@ pipeline {
                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
                    sh 'docker login -u muqtarmav -p ${dockerhub}'
 }
-                   sh 'docker push muqtarmav/go-roava:2.0'
+                   sh 'docker push muqtarmav/go-roava:3.0'
                 }
             }
         }
